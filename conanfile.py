@@ -1,5 +1,5 @@
 import os
-from conans import ConanFile, CMake, tools, AutoToolsBuildEnvironment
+from conans import tools, AutoToolsBuildEnvironment
 from nxtools import NxConanFile
 from glob import glob
 
@@ -37,7 +37,7 @@ class IcuConan(NxConanFile):
         tools.untargz(self.tarball_name, build_dir)
         os.unlink(self.tarball_name)
 
-        src_dir = "{staging_dir}/src/icu".format(staging_dir=self.staging_dir, v=self.version)
+        src_dir = "{staging_dir}/src/icu".format(staging_dir=self.staging_dir)
         for file in sorted(glob("patch/[0-9]*.patch")):
             self.output.info("Applying patch '{file}'".format(file=file))
             tools.patch(base_path=src_dir, patch_file=file, strip=0)

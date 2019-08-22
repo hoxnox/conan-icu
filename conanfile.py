@@ -58,5 +58,5 @@ class IcuConan(NxConanFile):
 
 
     def do_package_info(self):
-        self.cpp_info.libs = ["icuuc", "icui18n", "icudata"]
+        self.cpp_info.libs = ["icui18n", "icuuc", "icudata"]
 

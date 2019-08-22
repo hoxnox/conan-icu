@@ -1,0 +1,13 @@
+diff --git a/source/common/unicode/uconfig.h b/source/common/unicode/uconfig.h
+index e61eb57..4652f49 100644
+--- a/source/common/unicode/uconfig.h
++++ b/source/common/unicode/uconfig.h
+@@ -151,7 +151,7 @@
+  * @internal
+  */
+ #ifndef U_ENABLE_DYLOAD
+-#define U_ENABLE_DYLOAD 1
++#define U_ENABLE_DYLOAD 0
+ #endif
+ 
+ /**

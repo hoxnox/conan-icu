@@ -43,11 +43,9 @@ class IcuConan(NxConanFile):
             tools.patch(base_path=src_dir, patch_file=file, strip=0)
 
         env_build = AutoToolsBuildEnvironment(self)
-        if not self.options.get_safe("shared"):
-            env_build.defines.append("U_STATIC_IMPLEMENTATION")
         with tools.environment_append(env_build.vars):
-            self.run("cd {build_dir}/icu/source && CXX={compiler} CC={compiler} ./configure --prefix=\"{staging}\""
-                     " --enable-tools=no --enable-tests=no --enable-samples=no --disable-renaming --disable-debug --with-data-packaging=static --with-library-bits=64"
+            self.run("cd {build_dir}/icu/source && ./configure --prefix=\"{staging}\""
+                     " --enable-tools=yes --enable-tests=no --enable-samples=no --disable-renaming --disable-debug --with-data-packaging=static"
                      " {shared} {extras} {icuio} {layoutex}".format(
                          compiler = self.settings.compiler, 
                          shared="--enable-shared --disable-static" if self.options.shared else "--enable-static --disable-shared",
